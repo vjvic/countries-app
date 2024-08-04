@@ -45,10 +45,32 @@ const filterCountry = async (searchText) => {
   showCountryList(filteredCountry);
 };
 
-document.querySelector(".search-input").addEventListener("input", (event) => {
+const filterCountryByRegion = async (selectedRegion) => {
+  const countryList = await fetchCountryList();
+  if (!countryList) return;
+
+  const filteredCountryList = selectedRegion
+    ? countryList.filter(
+        (country) =>
+          country.region.toLowerCase() === selectedRegion.toLowerCase()
+      )
+    : countryList;
+
+  showCountryList(filteredCountryList);
+};
+
+//Events
+
+document.getElementById("search-input").addEventListener("input", (event) => {
   filterCountry(event.target.value);
 });
 
+document.getElementById("region").addEventListener("change", (event) => {
+  const selectedRegion = event.target.value;
+  filterCountryByRegion(selectedRegion);
+});
+
+//initialize
 const initialize = async () => {
   const countryList = await fetchCountryList();
   showCountryList(countryList);
