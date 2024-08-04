@@ -59,6 +59,7 @@ select {
 
 .input-container .search input {
   width: 100%;
+  padding-left: 40px;
 }
 
 .input-container .wrapper {
@@ -66,6 +67,20 @@ select {
   grid-template-columns: 60% auto;
   align-content: space-around;
   justify-content: space-between;
+}
+
+.input-container .wrapper .search {
+  position: relative;
+  width: 300px;
+}
+
+.input-container .wrapper .search-icon {
+  position: absolute;
+  top: 35%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #aaa;
 }
 
 .country-list {
@@ -89,14 +104,25 @@ select {
   font-weight: bold;
 }
 
-.country {
+.country-list .wrapper .country {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.info .title {
-  font-weight: bold;
+.country-list .wrapper .info {
+  padding: 20px;
 }
 
-.info .text span {
+.country-list .wrapper .info .title {
+  font-weight: bold;
+  padding: 12px 0;
+  font-size: 18px;
+}
+
+.country-list .wrapper .info .text {
+  opacity: 0.9;
+  padding: 5px 0;
+}
+
+.country-list .wrapper .info .text span {
   font-weight: bold;
 }
