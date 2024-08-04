@@ -9,17 +9,6 @@ const fetchCountryList = async () => {
   }
 };
 
-const filterCountry = async () => {
-  const countryList = await fetchCountryList();
-  const filteredCountry = countryList.filter(
-    (country) => country.name === "Afghanistan"
-  );
-
-  console.log(filteredCountry);
-};
-
-filterCountry();
-
 const showCountryList = async (countryList) => {
   const countryContainer = document.querySelector(".country-list .wrapper");
 
@@ -47,6 +36,18 @@ const showCountryList = async (countryList) => {
 
   console.log(countryList);
 };
+
+const filterCountry = async (searchText) => {
+  const countryList = await fetchCountryList();
+  const filteredCountry = countryList.filter((country) =>
+    country.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+  showCountryList(filteredCountry);
+};
+
+document.querySelector(".search-input").addEventListener("input", (event) => {
+  filterCountry(event.target.value);
+});
 
 const initialize = async () => {
   const countryList = await fetchCountryList();
